@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### Parameters
-go_get_repository_uri="github.com/dontsetse/systemd-docker"
+go_get_repository_uri="github.com/Osirium/systemd-docker"
 
 if [ ! -z "$1" ]; then
 	go_get_repository_uri="$1"
@@ -21,7 +21,7 @@ if [ -f "$script_folder/systemd-docker" ]; then
 fi
 
 ### Process
-docker run --mount type=bind,source="$script_folder",target=/compilation --rm -it golang:latest \
+docker run --mount type=bind,source="$script_folder",target=/compilation --rm -it golang:1.16 \
        /bin/bash /compilation/handle_go_get.sh "$go_get_repository_uri"
 
 docker_return=$?
